@@ -19,6 +19,7 @@
     <bpmn2:property id="radicado" itemSubjectRef="ItemDefinition_1" name="radicado"/>
     <bpmn2:property id="remitente" itemSubjectRef="ItemDefinition_1" name="remitente"/>
     <bpmn2:property id="tipo_documento" itemSubjectRef="ItemDefinition_1" name="tipo_documento"/>
+    <bpmn2:property id="aplicaArt154" itemSubjectRef="ItemDefinition_3" name="aplicaArt154"/>
     <bpmn2:startEvent id="_1">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
@@ -123,7 +124,7 @@
       <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_6" tns:priority="1" sourceRef="ExclusiveGateway_2" targetRef="EndEvent_3">
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_22" language="http://www.java.com/java">return aplicaArt154 == &quot;Si&quot;;</bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_22" language="http://www.java.com/java">return KieFunctions.isTrue(aplicaArt154);</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:callActivity id="CallActivity_1" tns:waitForCompletion="true" tns:independent="false" name="Tramite Falta de Competencia" calledElement="falta_competencia">
       <bpmn2:extensionElements>
@@ -146,7 +147,7 @@
       </bpmn2:dataInputAssociation>
     </bpmn2:callActivity>
     <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ExclusiveGateway_2" targetRef="CallActivity_1">
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_23" language="http://www.java.com/java">return aplicaArt154 == &quot;No&quot;;</bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_23" language="http://www.java.com/java">return KieFunctions.isFalse(aplicaArt154);</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:endEvent id="EndEvent_4" name="End Event 4">
       <bpmn2:extensionElements>
@@ -183,15 +184,15 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_CallActivity_1" bpmnElement="CallActivity_1" isExpanded="true">
-        <dc:Bounds height="50.0" width="185.0" x="490.0" y="143.0"/>
+        <dc:Bounds height="50.0" width="185.0" x="488.0" y="210.0"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="34.0" width="121.0" x="522.0" y="151.0"/>
+          <dc:Bounds height="34.0" width="121.0" x="520.0" y="218.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_4" bpmnElement="EndEvent_4">
-        <dc:Bounds height="36.0" width="36.0" x="743.0" y="150.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="741.0" y="217.0"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="17.0" width="79.0" x="722.0" y="186.0"/>
+          <dc:Bounds height="17.0" width="79.0" x="720.0" y="253.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_UserTask_1">
@@ -214,14 +215,14 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="BPMNShape_ExclusiveGateway_2" targetElement="BPMNShape_CallActivity_1">
         <di:waypoint xsi:type="dc:Point" x="581.0" y="88.0"/>
-        <di:waypoint xsi:type="dc:Point" x="581.0" y="115.0"/>
-        <di:waypoint xsi:type="dc:Point" x="582.0" y="143.0"/>
+        <di:waypoint xsi:type="dc:Point" x="581.0" y="149.0"/>
+        <di:waypoint xsi:type="dc:Point" x="580.0" y="210.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_CallActivity_1" targetElement="BPMNShape_EndEvent_4">
-        <di:waypoint xsi:type="dc:Point" x="675.0" y="168.0"/>
-        <di:waypoint xsi:type="dc:Point" x="709.0" y="168.0"/>
-        <di:waypoint xsi:type="dc:Point" x="743.0" y="168.0"/>
+        <di:waypoint xsi:type="dc:Point" x="673.0" y="235.0"/>
+        <di:waypoint xsi:type="dc:Point" x="707.0" y="235.0"/>
+        <di:waypoint xsi:type="dc:Point" x="741.0" y="235.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
