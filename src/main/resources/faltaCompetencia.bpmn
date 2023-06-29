@@ -4,8 +4,20 @@
   <bpmn2:itemDefinition id="ItemDefinition_1" isCollection="false" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="ItemDefinition_2" isCollection="false" structureRef="java.lang.Integer"/>
   <bpmn2:itemDefinition id="ItemDefinition_3" isCollection="false" structureRef="java.lang.Boolean"/>
+  <bpmn2:itemDefinition id="ItemDefinition_518" isCollection="false" structureRef="java.lang.Long"/>
   <bpmn2:process id="falta_competencia" tns:packageName="defaultPackage" name="tramite falta competencia" isExecutable="true" processType="Private">
     <bpmn2:property id="radicado" itemSubjectRef="ItemDefinition_1" name="radicado"/>
+    <bpmn2:property id="expediente" itemSubjectRef="ItemDefinition_1" name="expediente"/>
+    <bpmn2:property id="fecha_radicado" itemSubjectRef="ItemDefinition_1" name="fecha_radicado"/>
+    <bpmn2:property id="asunto" itemSubjectRef="ItemDefinition_1" name="asunto"/>
+    <bpmn2:property id="tipo_documento" itemSubjectRef="ItemDefinition_1" name="tipo_documento"/>
+    <bpmn2:property id="idempresa" itemSubjectRef="ItemDefinition_518" name="idempresa"/>
+    <bpmn2:property id="empresa" itemSubjectRef="ItemDefinition_1" name="empresa"/>
+    <bpmn2:property id="idremitente" itemSubjectRef="ItemDefinition_518" name="idremitente"/>
+    <bpmn2:property id="remitente" itemSubjectRef="ItemDefinition_1" name="remitente"/>
+    <bpmn2:property id="idcliente" itemSubjectRef="ItemDefinition_518" name="idcliente"/>
+    <bpmn2:property id="cliente" itemSubjectRef="ItemDefinition_1" name="cliente"/>
+    <bpmn2:property id="proyectista" itemSubjectRef="ItemDefinition_1" name="proyectista"/>
     <bpmn2:startEvent id="_1">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
