@@ -215,7 +215,7 @@
           <tns:script>System.out.println(&quot;before Rest Call ::::&quot;);</tns:script>
         </tns:onEntry-script>
         <tns:onExit-script scriptFormat="http://www.java.com/java">
-          <tns:script>System.out.println(&quot;before Rest Call ::::&quot;+output);</tns:script>
+          <tns:script>System.out.println(&quot;before Rest Call ::::&quot;+resultRest);</tns:script>
         </tns:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
