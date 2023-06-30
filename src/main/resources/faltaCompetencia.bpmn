@@ -5,6 +5,7 @@
   <bpmn2:itemDefinition id="ItemDefinition_2" isCollection="false" structureRef="java.lang.Integer"/>
   <bpmn2:itemDefinition id="ItemDefinition_3" isCollection="false" structureRef="java.lang.Boolean"/>
   <bpmn2:itemDefinition id="ItemDefinition_518" isCollection="false" structureRef="java.lang.Long"/>
+  <bpmn2:itemDefinition id="ItemDefinition_495" isCollection="false" structureRef="java.lang.Object"/>
   <bpmn2:process id="falta_competencia" tns:packageName="defaultPackage" name="tramite falta competencia" isExecutable="true" processType="Private">
     <bpmn2:property id="radicado" itemSubjectRef="ItemDefinition_1" name="radicado"/>
     <bpmn2:property id="expediente" itemSubjectRef="ItemDefinition_1" name="expediente"/>
@@ -20,6 +21,7 @@
     <bpmn2:property id="proyectista" itemSubjectRef="ItemDefinition_1" name="proyectista"/>
     <bpmn2:property id="tramite" itemSubjectRef="ItemDefinition_1" name="tramite"/>
     <bpmn2:property id="rechazadoFaltaCompetencia" itemSubjectRef="ItemDefinition_3" name="rechazadoFaltaCompetencia"/>
+    <bpmn2:property id="resultRest" itemSubjectRef="ItemDefinition_495" name="resultRest"/>
     <bpmn2:startEvent id="_1">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
@@ -219,23 +221,13 @@
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
       <bpmn2:ioSpecification id="InputOutputSpecification_3">
-        <bpmn2:dataInput id="DataInput_17" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_MethodInputXItem" name="Method"/>
-        <bpmn2:dataInput id="DataInput_19" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_UrlInputXItem" name="Url"/>
-        <bpmn2:dataInput id="DataInput_20" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ConnectTimeoutInputXItem" name="ConnectTimeout"/>
-        <bpmn2:dataInput id="DataInput_21" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ContentDataInputXItem" name="ContentData"/>
-        <bpmn2:dataInput id="DataInput_22" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_PasswordInputXItem" name="Password"/>
-        <bpmn2:dataInput id="DataInput_23" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ReadTimeoutInputXItem" name="ReadTimeout"/>
-        <bpmn2:dataInput id="DataInput_24" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_UsernameInputXItem" name="Username"/>
-        <bpmn2:dataInput id="DataInput_25" tns:dtype="Object" name="TaskName"/>
-        <bpmn2:dataOutput id="DataOutput_2" tns:dtype="java.lang.Object" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ResultOutputXItem" name="Result"/>
+        <bpmn2:dataInput id="DataInput_17" tns:dtype="String" itemSubjectRef="ItemDefinition_1" name="Method"/>
+        <bpmn2:dataInput id="DataInput_19" tns:dtype="String" itemSubjectRef="ItemDefinition_1" name="Url"/>
+        <bpmn2:dataInput id="DataInput_25" tns:dtype="Object" itemSubjectRef="ItemDefinition_1" name="TaskName"/>
+        <bpmn2:dataOutput id="DataOutput_2" tns:dtype="java.lang.Object" itemSubjectRef="ItemDefinition_1" name="Result"/>
         <bpmn2:inputSet id="InputSet_2">
           <bpmn2:dataInputRefs>DataInput_17</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>DataInput_19</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>DataInput_20</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>DataInput_21</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>DataInput_22</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>DataInput_23</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>DataInput_24</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>DataInput_25</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
         <bpmn2:outputSet id="OutputSet_3">
@@ -265,7 +257,7 @@
       </bpmn2:dataInputAssociation>
       <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
         <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
-        <bpmn2:targetRef>output</bpmn2:targetRef>
+        <bpmn2:targetRef>resultRest</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="Task_1">
