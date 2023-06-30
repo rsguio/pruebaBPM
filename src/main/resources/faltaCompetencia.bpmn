@@ -182,7 +182,7 @@
     <bpmn2:exclusiveGateway id="ExclusiveGateway_1" name="Rechazado porque no es falta de competencia" gatewayDirection="Diverging">
       <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
-      <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_6" tns:priority="1" sourceRef="CallActivity_1" targetRef="ExclusiveGateway_1"/>
     <bpmn2:endEvent id="EndEvent_3" name="Fin">
@@ -196,106 +196,159 @@
     <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="EndEvent_3">
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_23" language="http://www.java.com/java">return KieFunctions.isFalse(rechazadoFaltaCompetencia);</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:serviceTask id="ServiceTask_1" name="Service Task 1" implementation="##WebService">
-      <bpmn2:extensionElements>
-        <tns:metaData name="elementname">
-          <tns:metaValue><![CDATA[Service Task 1]]></tns:metaValue>
-        </tns:metaData>
-      </bpmn2:extensionElements>
-      <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
-      <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="InputOutputSpecification_4">
-        <bpmn2:inputSet id="InputSet_3" name="Input Set 3"/>
-        <bpmn2:outputSet id="OutputSet_4" name="Output Set 4"/>
-      </bpmn2:ioSpecification>
-    </bpmn2:serviceTask>
-    <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="ServiceTask_1"/>
     <bpmn2:endEvent id="EndEvent_4" name="Fin">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
           <tns:metaValue><![CDATA[Fin]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>SequenceFlow_9</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_9" tns:priority="1" sourceRef="ServiceTask_1" targetRef="EndEvent_4"/>
+    <bpmn2:task id="Task_1" tns:taskName="Rest" name="Registrar tramite errado">
+      <bpmn2:extensionElements>
+        <tns:metaData name="elementname">
+          <tns:metaValue><![CDATA[REST]]></tns:metaValue>
+        </tns:metaData>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script>System.out.println(&quot;before Rest Call ::::&quot;);</tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script>System.out.println(&quot;before Rest Call ::::&quot;+output);</tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_3">
+        <bpmn2:dataInput id="DataInput_17" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_MethodInputXItem" name="Method"/>
+        <bpmn2:dataInput id="DataInput_19" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_UrlInputXItem" name="Url"/>
+        <bpmn2:dataInput id="DataInput_20" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ConnectTimeoutInputXItem" name="ConnectTimeout"/>
+        <bpmn2:dataInput id="DataInput_21" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ContentDataInputXItem" name="ContentData"/>
+        <bpmn2:dataInput id="DataInput_22" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_PasswordInputXItem" name="Password"/>
+        <bpmn2:dataInput id="DataInput_23" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ReadTimeoutInputXItem" name="ReadTimeout"/>
+        <bpmn2:dataInput id="DataInput_24" tns:dtype="String" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_UsernameInputXItem" name="Username"/>
+        <bpmn2:dataInput id="DataInput_25" tns:dtype="Object" name="TaskName"/>
+        <bpmn2:dataOutput id="DataOutput_2" tns:dtype="java.lang.Object" itemSubjectRef="../../../../unit5-REST_SERVICETASK/src/main/resources/com/kie_space/unit5_rest_servicetask/Rest_Service_Task_Example.bpmn#__628EB5DA-F299-4792-8D4C-693772435A13_ResultOutputXItem" name="Result"/>
+        <bpmn2:inputSet id="InputSet_2">
+          <bpmn2:dataInputRefs>DataInput_17</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_19</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_20</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_21</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_22</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_23</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_24</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_25</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_3">
+          <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_17">
+        <bpmn2:targetRef>DataInput_17</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_3">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_5"><![CDATA[GET]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_6">_628EB5DA-F299-4792-8D4C-693772435A13_MethodInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_19">
+        <bpmn2:targetRef>DataInput_19</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_4">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_7"><![CDATA[https://jsonplaceholder.typicode.com/todos/1]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_8">_628EB5DA-F299-4792-8D4C-693772435A13_UrlInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_20">
+        <bpmn2:targetRef>DataInput_25</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_5">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_9"><![CDATA[Rest]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_10">_628EB5DA-F299-4792-8D4C-693772435A13_TaskNameInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+        <bpmn2:targetRef>output</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="Task_1">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_13" language="http://www.java.com/java">return KieFunctions.isTrue(rechazadoFaltaCompetencia);</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" sourceRef="Task_1" targetRef="EndEvent_4"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="falta_competencia">
       <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="_1">
         <dc:Bounds height="36.0" width="36.0" x="45.0" y="45.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_1"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_UserTask_1" bpmnElement="UserTask_1" isExpanded="true">
         <dc:Bounds height="50.0" width="255.0" x="186.0" y="38.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_2">
           <dc:Bounds height="34.0" width="206.0" x="210.0" y="46.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_CallActivity_1" bpmnElement="CallActivity_1" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="546.0" y="38.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_3">
           <dc:Bounds height="34.0" width="76.0" x="563.0" y="46.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_1" bpmnElement="ExclusiveGateway_1" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="731.0" y="138.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_4">
           <dc:Bounds height="102.0" width="87.0" x="713.0" y="188.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_3" bpmnElement="EndEvent_3">
         <dc:Bounds height="36.0" width="36.0" x="876.0" y="145.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_5">
           <dc:Bounds height="17.0" width="20.0" x="884.0" y="181.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_ServiceTask_1" bpmnElement="ServiceTask_1" isExpanded="true">
-        <dc:Bounds height="50.0" width="110.0" x="701.0" y="270.0"/>
-        <bpmndi:BPMNLabel>
-          <dc:Bounds height="17.0" width="97.0" x="707.0" y="286.0"/>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_4" bpmnElement="EndEvent_4">
+        <dc:Bounds height="36.0" width="36.0" x="876.0" y="322.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_7">
+          <dc:Bounds height="17.0" width="20.0" x="884.0" y="358.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_EndEvent_4" bpmnElement="EndEvent_4">
-        <dc:Bounds height="36.0" width="36.0" x="879.0" y="277.0"/>
+      <bpmndi:BPMNShape id="BPMNShape_Task_1" bpmnElement="Task_1">
+        <dc:Bounds height="55.0" width="125.0" x="694.0" y="312.0"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="17.0" width="20.0" x="887.0" y="313.0"/>
+          <dc:Bounds height="34.0" width="118.0" x="697.0" y="322.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_UserTask_1">
         <di:waypoint xsi:type="dc:Point" x="81.0" y="63.0"/>
         <di:waypoint xsi:type="dc:Point" x="133.0" y="63.0"/>
         <di:waypoint xsi:type="dc:Point" x="186.0" y="63.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_8"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_UserTask_1" targetElement="BPMNShape_CallActivity_1">
         <di:waypoint xsi:type="dc:Point" x="441.0" y="63.0"/>
         <di:waypoint xsi:type="dc:Point" x="493.0" y="63.0"/>
         <di:waypoint xsi:type="dc:Point" x="546.0" y="63.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_9"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="SequenceFlow_6" sourceElement="BPMNShape_CallActivity_1" targetElement="BPMNShape_ExclusiveGateway_1">
         <di:waypoint xsi:type="dc:Point" x="601.0" y="88.0"/>
         <di:waypoint xsi:type="dc:Point" x="601.0" y="163.0"/>
         <di:waypoint xsi:type="dc:Point" x="731.0" y="163.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_10"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_ExclusiveGateway_1" targetElement="BPMNShape_EndEvent_3">
         <di:waypoint xsi:type="dc:Point" x="781.0" y="163.0"/>
         <di:waypoint xsi:type="dc:Point" x="828.0" y="163.0"/>
         <di:waypoint xsi:type="dc:Point" x="876.0" y="163.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_11"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="BPMNShape_ExclusiveGateway_1" targetElement="BPMNShape_ServiceTask_1">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_ExclusiveGateway_1" targetElement="BPMNShape_Task_1">
         <di:waypoint xsi:type="dc:Point" x="756.0" y="188.0"/>
-        <di:waypoint xsi:type="dc:Point" x="756.0" y="229.0"/>
-        <di:waypoint xsi:type="dc:Point" x="756.0" y="270.0"/>
+        <di:waypoint xsi:type="dc:Point" x="756.0" y="250.0"/>
+        <di:waypoint xsi:type="dc:Point" x="756.0" y="312.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_ServiceTask_1" targetElement="BPMNShape_EndEvent_4">
-        <di:waypoint xsi:type="dc:Point" x="811.0" y="295.0"/>
-        <di:waypoint xsi:type="dc:Point" x="845.0" y="295.0"/>
-        <di:waypoint xsi:type="dc:Point" x="879.0" y="295.0"/>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_EndEvent_4">
+        <di:waypoint xsi:type="dc:Point" x="819.0" y="339.0"/>
+        <di:waypoint xsi:type="dc:Point" x="847.0" y="340.0"/>
+        <di:waypoint xsi:type="dc:Point" x="876.0" y="340.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

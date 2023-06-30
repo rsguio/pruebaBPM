@@ -3,8 +3,8 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>co.sspd</groupId>
   <artifactId>sap</artifactId>
+  <groupId>co.sspd</groupId>
   <version>1.0</version>
   <packaging>kjar</packaging>
   <name>sap</name>
@@ -16,6 +16,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<version>7.42.0.Final</version>
+		</dependency>
+	</dependencies>
+	
   <build>
     <plugins>
       <plugin>
